@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computer Networks 2023: Exercise 1</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <style>
+     
+      .moving-title {
+        color: blue;
+        animation: moveTitle 5s infinite alternate;
+      }
+
+      
+      .fixed-title {
+        color: red;
+      }
+
+      
+      @keyframes moveTitle {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(10px);
+        }
+      }
+
+      
+      .centered-images {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      
+      hr {
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <h1 class="moving-title">Computer Networks 2023: Exercise 1</h1>
+
+    
+    <h2 class="fixed-title">Shahar Nadiv & Omri Amidi</h2>
+
+    
+    <div class="centered-images">
+      <img
+        src="image1.jpg"
+        alt="Image 1"
+        style="width: 400px; height: 400px; margin-right: 10px"
+      />
+      <img src="image2.jpg" alt="Image 2" style="width: 400px; height: 400px" />
+    </div>
+
+    
+    <p>
+      <a href="https://www.runi.ac.il/" target="_blank"
+        >Visit the Course Website</a
+      >
+    </p>
+
+    
+    <p>
+      <a href="https://finance.yahoo.com/" target="_blank"
+        >My Favorite Website</a
+      >
+    </p>
+
+    
+    <hr />
+
+    
+    <form id="myForm" action="post_url" method="post">
+      <label for="sender">Sender:</label>
+      <input type="text" id="sender" name="sender" required />
+      <br />
+      <label for="receiver">Receiver:</label>
+      <input type="text" id="receiver" name="receiver" required />
+      <br />
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" required />
+      <br />
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+      <br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent default form submission
+
+          var formData = new FormData(this);
+
+          fetch(this.action, {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.text())
+            .then((data) => {
+              console.log("Success:", data);
+              // Handle success, e.g., display a message or update the page
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              // Handle errors here
+            });
+        });
+    </script>
+  </body>
+</html>
